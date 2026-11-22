@@ -1,0 +1,8 @@
+classpath:C:\Users\vipin\.m2\repository\org\springframework\spring-context\6.1.14\spring-context-6.1.14.jar	1305875:1729152604000
+classpath:C:\Users\vipin\.m2\repository\org\springframework\spring-aop\6.1.14\spring-aop-6.1.14.jar	417159:1793603153432
+classpath:C:\Users\vipin\.m2\repository\org\springframework\spring-beans\6.1.14\spring-beans-6.1.14.jar	862625:1793603194018
+classpath:C:\Users\vipin\.m2\repository\org\springframework\spring-core\6.1.14\spring-core-6.1.14.jar	1882447:1793603194646
+classpath:C:\Users\vipin\.m2\repository\org\springframework\spring-jcl\6.1.14\spring-jcl-6.1.14.jar	24538:1793603124887
+classpath:C:\Users\vipin\.m2\repository\org\springframework\spring-expression\6.1.14\spring-expression-6.1.14.jar	304491:1793603148692
+classpath:C:\Users\vipin\.m2\repository\io\micrometer\micrometer-observation\1.12.11\micrometer-observation-1.12.11.jar	71763:1793603127541
+classpath:C:\Users\vipin\.m2\repository\io\micrometer\micrometer-commons\1.12.11\micrometer-commons-1.12.11.jar	47478:1793603127539
