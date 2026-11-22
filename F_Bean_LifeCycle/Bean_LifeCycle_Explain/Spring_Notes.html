@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring, Spring Framework & Spring Boot - Handwritten Notes</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f9f9f9;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        h1 {
+            font-size: 24pt;
+            color: #1a5276;
+            text-align: center;
+            border-bottom: 3px solid #1a5276;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 18pt;
+            color: #2874a6;
+            border-left: 5px solid #2874a6;
+            padding-left: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            font-size: 14pt;
+            color: #1f618d;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        h4 {
+            font-size: 12pt;
+            color: #2e86c1;
+            margin-top: 15px;
+        }
+        .note-box {
+            background: #eaf2f8;
+            border-left: 4px solid #3498db;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .important {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .warning {
+            background: #fdedec;
+            border-left: 4px solid #e74c3c;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 9pt;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+        .inline-code {
+            background: #e8e8e8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 10pt;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #ecf0f1;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .diagram {
+            background: #fff;
+            border: 2px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+        .section-divider {
+            border-top: 2px dashed #3498db;
+            margin: 30px 0;
+        }
+        .handwritten {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        .toc {
+            background: #eaf2f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .toc h2 {
+            border-left: none;
+            padding-left: 0;
+        }
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .toc li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #bdc3c7;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== COVER PAGE ==================== -->
+<div style="text-align: center; padding-top: 100px;">
+    <h1 style="font-size: 36pt; border: none;">📝 Spring, Spring Framework & Spring Boot</h1>
+    <h2 style="border: none; padding: 0; color: #7f8c8d;">Complete Handwritten Notes</h2>
+    <p style="font-size: 16pt; margin-top: 50px;">Advanced Level Notes in Hindi/Hinglish</p>
+    <p style="font-size: 12pt; color: #95a5a6;">Spring Core | Spring Framework | Spring Boot</p>
+    <p style="font-size: 12pt; color: #95a5a6; margin-top: 100px;">Created: November 2025</p>
+</div>
+
+<!-- ==================== TABLE OF CONTENTS ==================== -->
+<div class="page-break">
+<h1>📋 Table of Contents</h1>
+<div class="toc">
+<h2>Section 1: Spring Core</h2>
+<ul>
+    <li>1.1 Spring Framework Kya Hai?</li>
+    <li>1.2 Inversion of Control (IoC)</li>
+    <li>1.3 Dependency Injection (DI)</li>
+    <li>1.4 Spring Bean</li>
+    <li>1.5 Bean Scopes</li>
+    <li>1.6 Bean Lifecycle</li>
+    <li>1.7 @PostConstruct & @PreDestroy</li>
+    <li>1.8 Bean Factory vs Application Context</li>
+    <li>1.9 Dependency Injection Types</li>
+    <li>1.10 Component Scanning</li>
+    <li>1.11 Spring Configuration</li>
+    <li>1.12 Profiles</li>
+    <li>1.13 Property Sources</li>
+    <li>1.14 Event Handling</li>
+    <li>1.15 Resource & MessageSource</li>
+</ul>
+
+<h2>Section 2: Spring Framework</h2>
+<ul>
+    <li>2.1 Spring MVC</li>
+    <li>2.2 Spring AOP</li>
+    <li>2.3 Spring Data JPA</li>
+    <li>2.4 Spring Security</li>
+    <li>2.5 Spring Transaction Management</li>
+    <li>2.6 Spring Validation</li>
+    <li>2.7 Spring REST</li>
+    <li>2.8 Spring Messaging</li>
+    <li>2.9 Spring Cache</li>
+    <li>2.10 Spring Test</li>
+</ul>
+
+<h2>Section 3: Spring Boot</h2>
+<ul>
+    <li>3.1 Spring Boot Kya Hai?</li>
+    <li>3.2 Auto Configuration</li>
+    <li>3.3 Spring Boot Starters</li>
+    <li>3.4 Embedded Servers</li>
+    <li>3.5 Application Properties</li>
+    <li>3.6 Spring Boot Actuator</li>
+    <li>3.7 Spring Boot DevTools</li>
+    <li>3.8 Spring Boot CLI</li>
+    <li>3.9 Spring Boot Testing</li>
+    <li>3.10 Spring Boot Deployment</li>
+    <li>3.11 Spring Boot Internals</li>
+    <li>3.12 Custom Auto Configuration</li>
+</ul>
+</div>
+</div>
+
+<!-- ==================== SECTION 1: SPRING CORE ==================== -->
+<div class="page-break">
+
+<h1>📚 Section 1: Spring Core</h1>
+
+<h2>1.1 Spring Framework Kya Hai?</h2>
+<div class="note-box">
+<strong>Definition:</strong> Spring Framework ek open-source Java framework hai jo enterprise applications banane ke liye use hota hai. Ye lightweight, modular, aur flexible hai.
+</div>
+
+<h3>Key Features:</h3>
+<ul>
+    <li><strong>Lightweight:</strong> Minimal overhead, fast startup</li>
+    <li><strong>Modular:</strong> Only use what you need</li>
+    <li><strong>Loose Coupling:</strong> IoC aur DI se components decouple hote hain</li>
+    <li><strong>Testability:</strong> Easy unit testing with mock objects</li>
+    <li><strong>Transaction Management:</strong> Declarative transactions</li>
+    <li><strong>MVC Framework:</strong> Built-in web framework</li>
+    <li><strong>Security:</strong> Spring Security integration</li>
+</ul>
+
+<h3>Spring Modules:</h3>
+<table>
+    <tr><th>Module</th><th>Description</th></tr>
+    <tr><td>Core Container</td><td>IoC, DI, Beans, Events</td></tr>
+    <tr><td>Data Access/Integration</td><td>JDBC, ORM, JMS, Transactions</td></tr>
+    <tr><td>Web</td><td>MVC, REST, WebSocket</td></tr>
+    <tr><td>AOP</td><td>Aspect-Oriented Programming</td></tr>
+    <tr><td>Instrumentation</td><td>Classloading, Monitoring</td></tr>
+    <tr><td>Test</td><td>Unit & Integration Testing</td></tr>
+</table>
+
+<h3>Spring Architecture:</h3>
+<div class="diagram">
+┌─────────────────────────────────────────┐
+│           Spring Framework              │
+├─────────────────────────────────────────┤
+│  Test ← Integration with JUnit/TestNG   │
+├─────────────────────────────────────────┤
+│  Web ← MVC, REST, WebSocket, Portlet    │
+├─────────────────────────────────────────┤
+│  AOP ← Aspect-Oriented Programming      │
+├─────────────────────────────────────────┤
+│  MVC ← Web MVC Framework                │
+├─────────────────────────────────────────┤
+│  Data Access ← JDBC, ORM, OxM, JMS      │
+├─────────────────────────────────────────┤
+│  Business ← Transactions, Validation     │
+├─────────────────────────────────────────┤
+│  Core ← Beans, Core, Context, SpEL      │
+└─────────────────────────────────────────┘
+</div>
+
+<h2>1.2 Inversion of Control (IoC)</h2>
+<div class="note-box">
+<strong>IoC Principle:</strong> Traditional programming mein hum objects khud create karte hain. IoC mein ye responsibility framework ko de dete hain.
+</div>
+
+<h3>Traditional Approach (Before IoC):</h3>
+<div class="code-block">
+// Traditional - Tight Coupling
+public class Car {
+    private Engine engine = new Engine();  // Khud create kar rahe hain
+    
+    public void start() {
+        engine.start();
+    }
+}
+</div>
+
+<h3>IoC Approach:</h3>
+<div class="code-block">
+// IoC - Loose Coupling
+public class Car {
+    private Engine engine;  // Framework inject karega
+    
+    public Car(Engine engine) {  // Constructor Injection
+        this.engine = engine;
+    }
+    
+    public void start() {
+        engine.start();
+    }
+}
+</div>
+
+<div class="important">
+<strong>Key Point:</strong> IoC ka matlab hai control ki inversion — object creation aur wiring ka control application se hata kar framework ko de diya jata hai.
+</div>
+
+<h3>IoC Container:</h3>
+<ul>
+    <li>Spring ka IoC container objects create karta hai</li>
+    <li>Dependencies inject karta hai</li>
+    <li>Objects ka lifecycle manage karta hai</li>
+    <li>Do types: <span class="inline-code">BeanFactory</span> aur <span class="inline-code">ApplicationContext</span></li>
+</ul>
+
+<h2>1.3 Dependency Injection (DI)</h2>
+<div class="note-box">
+<strong>DI Definition:</strong> Dependency Injection IoC ka ek pattern hai jisme dependencies external source se provide hoti hain, object khud create nahi karta.
+</div>
+
+<h3>DI ke 3 Types:</h3>
+
+<h4>1. Constructor Injection:</h4>
+<div class="code-block">
+@Service
+public class UserService {
+    private final UserRepository userRepository;
+    
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+}
+</div>
+
+<h4>2. Setter Injection:</h4>
+<div class="code-block">
+@Service
+public class UserService {
+    private UserRepository userRepository;
+    
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+}
+</div>
+
+<h4>3. Field Injection:</h4>
+<div class="code-block">
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;  // Direct field injection
+}
+</div>
+
+<div class="important">
+<strong>Best Practice:</strong> Constructor Injection sabse recommended hai kyunki:
+- Objects immutable hote hain
+- Null checks nahi chahiye
+- Testing easy hota hai
+- Circular dependency detect hota hai
+</div>
+
+<h2>1.4 Spring Bean</h2>
+<div class="note-box">
+<strong>Bean Definition:</strong> Spring Bean ek Java object hai jo Spring IoC container manage karta hai. Ye application ka fundamental building block hai.
+</div>
+
+<h3>Bean Registration Methods:</h3>
+
+<h4>1. @Component Annotation:</h4>
+<div class="code-block">
+@Component
+public class MyService {
+    // Spring automatically detect aur manage karega
+}
+</div>
+
+<h4>2. @Bean Annotation:</h4>
+<div class="code-block">
+@Configuration
+public class AppConfig {
+    
+    @Bean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+</div>
+
+<h4>3. Component Scanning:</h4>
+<div class="code-block">
+@ComponentScan("com.example.service")
+public class AppConfig {
+    // Saare @Component annotated classes scan hongi
+}
+</div>
+
+<h3>Bean Stereotype Annotations:</h3>
+<table>
+    <tr><th>Annotation</th><th>Layer</th><th>Description</th></tr>
+    <tr><td>@Component</td><td>Generic</td><td>Generic Spring-managed object</td></tr>
+    <tr><td>@Service</td><td>Service</td><td>Business logic layer</td></tr>
+    <tr><td>@Repository</td><td>DAO</td><td>Data access layer, exception translation</td></tr>
+    <tr><td>@Controller</td><td>Web</td><td>MVC controller layer</td></tr>
+    <tr><td>@RestController</td><td>Web</td><td>REST controller layer</td></tr>
+</table>
+
+<h2>1.5 Bean Scopes</h2>
+<div class="note-box">
+<strong>Bean Scope:</strong> Bean scope define karta hai ki ek bean ka kitne instances create honge.
+</div>
+
+<h3>Available Scopes:</h3>
+<table>
+    <tr><th>Scope</th><th>Description</th><th>Default?</th></tr>
+    <tr><td>singleton</td><td>Ek instance per container</td><td>✅ Yes</td></tr>
+    <tr><td>prototype</td><td>Naya instance har baar</td><td>❌ No</td></tr>
+    <tr><td>request</td><td>Ek instance per HTTP request</td><td>❌ No</td></tr>
+    <tr><td>session</td><td>Ek instance per HTTP session</td><td>❌ No</td></tr>
+    <tr><td>application</td><td>Ek instance per ServletContext</td><td>❌ No</td></tr>
+    <tr><td>websocket</td><td>Ek instance per WebSocket</td><td>❌ No</td></tr>
+</table>
+
+<h3>Singleton vs Prototype Example:</h3>
+<div class="code-block">
+// Singleton (Default) - Ek instance
+@Component
+@Scope("singleton")
+public class SingletonService {
+    // Saare requests same instance share karenge
+}
+
+// Prototype - Naya instance har baar
+@Component
+@Scope("prototype")
+public class PrototypeService {
+    // Har injection pe naya instance milega
+}
+</div>
+
+<div class="warning">
+<strong>Important:</strong> Web scopes (request, session, application) ke liye Spring MVC ya Spring Boot web context chahiye hota hai.
+</div>
+
+<h2>1.6 Bean Lifecycle</h2>
+<div class="note-box">
+<strong>Bean Lifecycle:</strong> Spring bean ke creation se le kar destruction tak ke saare steps ko bean lifecycle kehte hain.
+</div>
+
+<h3>Complete Lifecycle Steps:</h3>
+<div class="diagram">
+┌──────────────────────────────────────────────┐
+│           BEAN LIFECYCLE FLOW                │
+├──────────────────────────────────────────────┤
+│                                              │
+│  1. Object Creation (Instantiation)          │
+│         ↓                                    │
+│  2. Dependency Injection (@Autowired)        │
+│         ↓                                    │
+│  3. @PostConstruct Method Call               │
+│         ↓                                    │
+│  4. BeanPostProcessor (before)               │
+│         ↓                                    │
+│  5. Bean is Ready (Use Phase)                │
+│         ↓                                    │
+│  6. BeanPostProcessor (after)                │
+│         ↓                                    │
+│  7. @PreDestroy Method Call                  │
+│         ↓                                    │
+│  8. Bean Destruction                          │
+│                                              │
+└──────────────────────────────────────────────┘
+</div>
+
+<h3>Lifecycle Callbacks:</h3>
+<div class="code-block">
+@Component
+public class MyBean {
+    
+    // 1. Constructor
+    public MyBean() {
+        System.out.println("Step 1: Object created");
+    }
+    
+    // 2. @PostConstruct - After dependency injection
+    @PostConstruct
+    public void init() {
+        System.out.println("Step 3: Initialization");
+    }
+    
+    // 3. @PreDestroy - Before bean destruction
+    @PreDestroy
+    public void cleanup() {
+        System.out.println("Step 7: Cleanup");
+    }
+}
+</div>
+
+<h3>InitializingBean & DisposableBean:</h3>
+<div class="code-block">
+@Component
+public class MyBean implements InitializingBean, DisposableBean {
+    
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        // @PostConstruct ke baad call hota hai
+        System.out.println("InitializingBean callback");
+    }
+    
+    @Override
+    public void destroy() throws Exception {
+        // @PreDestroy se pehle call hota hai
+        System.out.println("DisposableBean callback");
+    }
+}
+</div>
+
+<h3>BeanPostProcessor:</h3>
+<div class="code-block">
+@Component
+public class MyPostProcessor implements BeanPostProcessor {
+    
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) {
+        // @PostConstruct se pehle
+        System.out.println("Before: " + beanName);
+        return bean;
+    }
+    
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) {
+        // @PostConstruct ke baad
+        System.out.println("After: " + beanName);
+        return bean;
+    }
+}
+</div>
+
+<h2>1.7 @PostConstruct & @PreDestroy</h2>
+<div class="note-box">
+<strong>@PostConstruct:</strong> Bean create hone ke baad aur use hone se pehle automatically execute hota hai. Initialization ke liye use hota hai.
+</div>
+
+<div class="note-box">
+<strong>@PreDestroy:</strong> Bean ko destroy karne se pehle automatically execute hota hai. Cleanup ke liye use hota hai.
+</div>
+
+<h3>Complete Example:</h3>
+<div class="code-block">
+@Service
+public class DatabaseService {
+    
+    private Connection connection;
+    
+    @PostConstruct
+    public void initialize() {
+        // Bean ready hone ke baad connection open karo
+        connection = DriverManager.getConnection(url);
+        System.out.println("Database connected!");
+    }
+    
+    public void processData() {
+        // Business logic
+    }
+    
+    @PreDestroy
+    public void cleanup() {
+        // Container close hone se pehle connection close karo
+        if (connection != null) {
+            connection.close();
+        }
+        System.out.println("Database disconnected!");
+    }
+}
+</div>
+
+<h3>Execution Order:</h3>
+<div class="diagram">
+Constructor → @Autowired → @PostConstruct → [Bean Use] → @PreDestroy → Destroy
+</div>
+
+<h2>1.8 Bean Factory vs Application Context</h2>
+<table>
+    <tr><th>Feature</th><th>BeanFactory</th><th>ApplicationContext</th></tr>
+    <tr><td>Interface</td><td>org.springframework.beans.factory.BeanFactory</td><td>org.springframework.context.ApplicationContext</td></tr>
+    <tr><td>DI</td><td>Basic DI</td><td>Advanced DI</td></tr>
+    <tr><td>Lazy Loading</td><td>✅ Yes (Default)</td><td>❌ No (Eager)</td></tr>
+    <tr><td>AOP</td><td>❌ No</td><td>✅ Yes</td></tr>
+    <tr><td>Event Publishing</td><td>❌ No</td><td>✅ Yes</td></tr>
+    <tr><td>i18n</td><td>❌ No</td><td>✅ Yes</td></tr>
+    <tr><td>Component Scanning</td><td>❌ No</td><td>✅ Yes</td></tr>
+    <tr><td>Usage</td><td>Lightweight apps</td><td>Enterprise apps</td></tr>
+</table>
+
+<h3>Implementation Classes:</h3>
+<div class="code-block">
+// BeanFactory
+XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
+
+// ApplicationContext
+ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
+ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+</div>
+
+<div class="important">
+<strong>Recommendation:</strong> Hamesha ApplicationContext use karo — ye BeanFactory se zyada powerful hai aur production apps ke liye best hai.
+</div>
+
+<h2>1.9 Dependency Injection Types</h2>
+<h3>By Type:</h3>
+<div class="code-block">
+// Spring type match karke inject karta hai
+@Autowired
+private PaymentService paymentService;  // PaymentService type ka bean dhundega
+</div>
+
+<h3>By Name:</h3>
+<div class="code-block">
+// Spring name match karke inject karta hai
+@Autowired
+@Qualifier("creditCardService")
+private PaymentService paymentService;  // "creditCardService" naam ka bean lega
+</div>
+
+<h3>By Constructor:</h3>
+<div class="code-block">
+// Constructor through injection (Recommended)
+@Service
+public class OrderService {
+    private final PaymentService paymentService;
+    
+    public OrderService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+}
+</div>
+
+<h2>1.10 Component Scanning</h2>
+<div class="note-box">
+<strong>Component Scanning:</strong> Spring automatically classes scan karta hai aur annotated beans detect karta hai.
+</div>
+
+<h3>Configuration:</h3>
+<div class="code-block">
+@Configuration
+@ComponentScan(basePackages = {"com.example.service", "com.example.repository"})
+public class AppConfig {
+}
+
+// Ya phir Spring Boot mein default:
+// @SpringBootApplication automatically component scanning enable karta hai
+</div>
+
+<h3>Stereotype Annotations:</h3>
+<div class="code-block">
+@Component      // Generic
+@Service        // Service layer
+@Repository     // DAO layer
+@Controller     // MVC layer
+@RestController // REST layer
+@Configuration  // Config class
+</div>
+
+<h2>1.11 Spring Configuration</h2>
+<h3>Java-based Configuration:</h3>
+<div class="code-block">
+@Configuration
+public class AppConfig {
+    
+    @Bean
+    public DataSource dataSource() {
+        DataSource ds = new DataSource();
+        ds.setUrl("jdbc:mysql://localhost:3306/mydb");
+        return ds;
+    }
+    
+    @Bean
+    public UserService userService(DataSource dataSource) {
+        return new UserService(dataSource);
+    }
+}
+</div>
+
+<h3>XML-based Configuration:</h3>
+<div class="code-block">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"&gt;
+    
+    &lt;bean id="userService" class="com.example.UserService"&gt;
+        &lt;property name="dataSource" ref="dataSource"/&gt;
+    &lt;/bean&gt;
+    
+    &lt;bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"&gt;
+        &lt;property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mydb"/&gt;
+    &lt;/bean&gt;
+    
+&lt;/beans&gt;
+</div>
+
+<h2>1.12 Profiles</h2>
+<div class="note-box">
+<strong>Profiles:</strong> Different environments (dev, test, prod) ke liye different configurations use karne ke liye profiles use hote hain.
+</div>
+
+<h3>Profile Configuration:</h3>
+<div class="code-block">
+// Development profile
+@Configuration
+@Profile("dev")
+public class DevConfig {
+    @Bean
+    public DataSource dataSource() {
+        // Dev database
+    }
+}
+
+// Production profile
+@Configuration
+@Profile("prod")
+public class ProdConfig {
+    @Bean
+    public DataSource dataSource() {
+        // Production database
+    }
+}
+
+// Activate profile
+application.properties:
+spring.profiles.active=dev
+</div>
+
+<h2>1.13 Property Sources</h2>
+<div class="code-block">
+// application.properties
+app.name=MyApplication
+app.version=1.0
+db.url=jdbc:mysql://localhost:3306/mydb
+
+// Java code mein access
+@Value("${app.name}")
+private String appName;
+
+// Environment object se access
+@Autowired
+private Environment env;
+String name = env.getProperty("app.name");
+</div>
+
+<h2>1.14 Event Handling</h2>
+<div class="code-block">
+// Custom Event
+public class OrderEvent extends ApplicationEvent {
+    private final Order order;
+    
+    public OrderEvent(Object source, Order order) {
+        super(source);
+        this.order = order;
+    }
+}
+
+// Event Publisher
+@Service
+public class OrderService {
+    @Autowired
+    private ApplicationEventPublisher publisher;
+    
+    public void placeOrder(Order order) {
+        // Order process karo
+        publisher.publishEvent(new OrderEvent(this, order));
+    }
+}
+
+// Event Listener
+@Component
+public class OrderListener {
+    @EventListener
+    public void handleOrderEvent(OrderEvent event) {
+        // Email bhejo, notification bhejo, etc.
+    }
+}
+</div>
+
+<h2>1.15 Resource & MessageSource</h2>
+<div class="code-block">
+// Resource - File access
+@Autowired
+private ResourceLoader resourceLoader;
+
+Resource resource = resourceLoader.getResource("classpath:config.txt");
+
+// MessageSource - Internationalization
+@Autowired
+private MessageSource messageSource;
+
+String message = messageSource.getMessage("greeting", null, Locale.US);
+</div>
+
+</div>
+
+<!-- ==================== SECTION 2: SPRING FRAMEWORK ==================== -->
+<div class="page-break">
+
+<h1>📚 Section 2: Spring Framework</h1>
+
+<h2>2.1 Spring MVC</h2>
+<div class="note-box">
+<strong>Spring MVC:</strong> Model-View-Controller pattern par based web framework hai jo Spring ka part hai.
+</div>
+
+<h3>Architecture:</h3>
+<div class="diagram">
+┌─────────────────────────────────────────────┐
+│         Spring MVC Architecture             │
+├─────────────────────────────────────────────┤
+│                                             │
+│  Client → DispatcherServlet                 │
+│             ↓                               │
+│  HandlerMapping → Controller                │
+│             ↓                               │
+│  Controller → Service → Repository          │
+│             ↓                               │
+│  ViewResolver → View → Response             │
+│                                             │
+└─────────────────────────────────────────────┘
+</div>
+
+<h3>Key Components:</h3>
+<table>
+    <tr><th>Component</th><th>Role</th></tr>
+    <tr><td>DispatcherServlet</td><td>Front controller, sab requests handle karta hai</td></tr>
+    <tr><td>HandlerMapping</td><td>Request ko appropriate controller se map karta hai</td></tr>
+    <tr><td>Controller</td><td>Business logic handle karta hai</td></tr>
+    <tr><td>Model</td><td>Data hold karta hai</td></tr>
+    <tr><td>ViewResolver</td><td>View name se actual view find karta hai</td></tr>
+    <tr><td>View</td><td>Response render karta hai</td></tr>
+</table>
+
+<h3>Controller Example:</h3>
+<div class="code-block">
+@Controller
+@RequestMapping("/users")
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @GetMapping
+    public String getAllUsers(Model model) {
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
+        return "user-list";  // View name
+    }
+    
+    @GetMapping("/{id}")
+    public String getUser(@PathVariable Long id, Model model) {
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "user-detail";
+    }
+    
+    @PostMapping
+    public String createUser(@RequestBody User user) {
+        userService.saveUser(user);
+        return "redirect:/users";
+    }
+}
+</div>
+
+<h3>@RequestMapping Variants:</h3>
+<div class="code-block">
+@GetMapping    // HTTP GET
+@PostMapping   // HTTP POST
+@PutMapping    // HTTP PUT
+@DeleteMapping // HTTP DELETE
+@PatchMapping  // HTTP PATCH
+</div>
+
+<h2>2.2 Spring AOP</h2>
+<div class="note-box">
+<strong>AOP (Aspect-Oriented Programming):</strong> Cross-cutting concerns (logging, security, transactions) ko separate code mein isolate karta hai.
+</div>
+
+<h3>Key Concepts:</h3>
+<table>
+    <tr><th>Term</th><th>Description</th></tr>
+    <tr><td>Aspect</td><td>Cross-cutting concern (Logging, Security)</td></tr>
+    <tr><td>Join Point</td><td>Method execution, exception handling</td></tr>
+    <tr><td>Advice</td><td>Action taken at join point</td></tr>
+    <tr><td>Pointcut</td><td>Expression that matches join points</td></tr>
+    <tr><td>Weaving</td><td>Aspect ko application se connect karna</td></tr>
+    <tr><td>Proxy</td><td>Aspect-enabled object</td></tr>
+</table>
+
+<h3>Advice Types:</h3>
+<div class="code-block">
+@Aspect
+@Component
+public class LoggingAspect {
+    
+    // Before - Method se pehle
+    @Before("execution(* com.example.service.*.*(..))")
+    public void logBefore(JoinPoint joinPoint) {
+        System.out.println("Before: " + joinPoint.getSignature());
+    }
+    
+    // After Returning - Method success hone ke baad
+    @AfterReturning(pointcut = "execution(* com.example.service.*.*(..))", 
+                    returning = "result")
+    public void logAfterReturning(Object result) {
+        System.out.println("Result: " + result);
+    }
+    
+    // After Throwing - Exception aane pe
+    @AfterThrowing(pointcut = "execution(* com.example.service.*.*(..))", 
+                   throwing = "ex")
+    public void logException(Exception ex) {
+        System.out.println("Exception: " + ex.getMessage());
+    }
+    
+    // After - Hamesha execute hota hai
+    @After("execution(* com.example.service.*.*(..))")
+    public void logAfter() {
+        System.out.println("After method execution");
+    }
+    
+    // Around - Pehle aur baad dono
+    @Around("execution(* com.example.service.*.*(..))")
+    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        long start = System.currentTimeMillis();
+        Object result = joinPoint.proceed();
+        long end = System.currentTimeMillis();
+        System.out.println("Time: " + (end - start) + "ms");
+        return result;
+    }
+}
+</div>
+
+<h2>2.3 Spring Data JPA</h2>
+<div class="note-box">
+<strong>Spring Data JPA:</strong> JPA repositories ko easily create karne ka framework hai. Boilerplate code kam karta hai.
+</div>
+
+<h3>Repository Interface:</h3>
+<div class="code-block">
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    
+    // Derived queries - Automatically implement hote hain
+    List<User> findByEmail(String email);
+    List<User> findByAgeGreaterThan(int age);
+    Optional<User> findByUsername(String username);
+    
+    // Custom query with @Query
+    @Query("SELECT u FROM User u WHERE u.age > :age")
+    List<User> findOlderUsers(@Param("age") int age);
+    
+    // Native query
+    @Query(value = "SELECT * FROM users WHERE created_at > :date", 
+           nativeQuery = true)
+    List<User> findRecentUsers(@Param("date") LocalDate date);
+}
+</div>
+
+<h3>Entity Example:</h3>
+<div class="code-block">
+@Entity
+@Table(name = "users")
+public class User {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(nullable = false, unique = true)
+    private String email;
+    
+    @Column(nullable = false)
+    private String name;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders;
+    
+    // Getters and Setters
+}
+</div>
+
+<h3>Specifications for Dynamic Queries:</h3>
+<div class="code-block">
+public class UserSpecifications {
+    
+    public static Specification<User> hasEmail(String email) {
+        return (root, query, cb) -> cb.equal(root.get("email"), email);
+    }
+    
+    public static Specification<User> hasAgeGreaterThan(int age) {
+        return (root, query, cb) -> cb.greaterThan(root.get("age"), age);
+    }
+}
+
+// Usage
+Specification<User> spec = UserSpecifications.hasEmail("test@email.com")
+    .and(UserSpecifications.hasAgeGreaterThan(18));
+List<User> users = userRepository.findAll(spec);
+</div>
+
+<h2>2.4 Spring Security</h2>
+<div class="note-box">
+<strong>Spring Security:</strong> Authentication aur Authorization provide karta hai. Application ko secure banata hai.
+</div>
+
+<h3>Security Configuration:</h3>
+<div class="code-block">
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+    
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf().disable()
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/public/**").permitAll()
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                .anyRequest().authenticated()
+            )
+            .httpBasic(Customizer.withDefaults());
+        return http.build();
+    }
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    
+    @Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails user = User.builder()
+            .username("user")
+            .password(passwordEncoder().encode("password"))
+            .roles("USER")
+            .build();
+        return new InMemoryUserDetailsManager(user);
+    }
+}
+</div>
+
+<h3>JWT Authentication:</h3>
+<div class="code-block">
+// JWT Filter
+@Component
+public class JwtAuthFilter extends OncePerRequestFilter {
+    
+    @Override
+    protected void doFilterInternal(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain filterChain) {
+        
+        String header = request.getHeader("Authorization");
+        if (header != null && header.startsWith("Bearer ")) {
+            String token = header.substring(7);
+            String username = jwtService.extractUsername(token);
+            
+            if (username != null) {
+                Authentication auth = new UsernamePasswordAuthenticationToken(
+                    username, null, Collections.emptyList()
+                );
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
+        }
+        filterChain.doFilter(request, response);
+    }
+}
+</div>
+
+<h2>2.5 Spring Transaction Management</h2>
+<div class="note-box">
+<strong>Transaction Management:</strong> Database operations ko ACID properties ke saath manage karta hai.
+</div>
+
+<h3>Declarative Transactions:</h3>
+<div class="code-block">
+@Service
+@Transactional
+public class OrderService {
+    
+    @Autowired
+    private OrderRepository orderRepository;
+    
+    @Autowired
+    private PaymentRepository paymentRepository;
+    
+    // @Transactional - Both operations ek transaction mein
+    public void placeOrder(Order order, Payment payment) {
+        orderRepository.save(order);
+        paymentRepository.save(payment);
+        // Agar exception aaya, to dono rollback honge
+    }
+    
+    // Read-only transaction
+    @Transactional(readOnly = true)
+    public List<Order> getOrders() {
+        return orderRepository.findAll();
+    }
+    
+    // Custom rollback
+    @Transactional(rollbackFor = CustomException.class)
+    public void processOrder(Order order) {
+        // CustomException pe rollback hoga
+    }
+}
+</div>
+
+<h3>Transaction Propagation:</h3>
+<table>
+    <tr><th>Propagation</th><th>Description</th></tr>
+    <tr><td>REQUIRED</td><td>Existing transaction use karo, nahi to naya banao (Default)</td></tr>
+    <tr><td>REQUIRES_NEW</td><td>Hamesha naya transaction banao</td></tr>
+    <tr><td>SUPPORTS</td><td>Transaction ho to use karo, nahi to without bhi chalo</td></tr>
+    <tr><td>NOT_SUPPORTED</td><td>Transaction ke bina chalo</td></tr>
+    <tr><td>MANDATORY</td><td>Existing transaction chahiye, nahi to exception</td></tr>
+    <tr><td>NEVER</td><td>Transaction ke bina chalo, transaction ho to exception</td></tr>
+    <tr><td>NESTED</td><td>Nested transaction - savepoints use karta hai</td></tr>
+</table>
+
+<h2>2.6 Spring Validation</h2>
+<div class="code-block">
+// Entity with validation
+public class User {
+    
+    @NotBlank(message = "Name is required")
+    @Size(min = 2, max = 50)
+    private String name;
+    
+    @Email(message = "Invalid email")
+    private String email;
+    
+    @Min(value = 18, message = "Must be 18+")
+    private int age;
+    
+    @Pattern(regexp = "^[0-9]{10}$", message = "Invalid phone")
+    private String phone;
+}
+
+// Controller validation
+@PostMapping("/users")
+public ResponseEntity<?> createUser(@Valid @RequestBody User user) {
+    // Validation errors automatically handle honge
+    userService.save(user);
+    return ResponseEntity.ok(user);
+}
+
+// Global exception handler
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleValidation(
+            MethodArgumentNotValidException ex) {
+        
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error -> 
+            errors.put(error.getField(), error.getDefaultMessage())
+        );
+        return ResponseEntity.badRequest().body(errors);
+    }
+}
+</div>
+
+<h2>2.7 Spring REST</h2>
+<div class="code-block">
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    
+    @GetMapping
+    public ResponseEntity<List<User>> getAll() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getById(@PathVariable Long id) {
+        return userService.findById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+    }
+    
+    @PostMapping
+    public ResponseEntity<User> create(@RequestBody User user) {
+        User saved = userService.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<User> update(
+            @PathVariable Long id, 
+            @RequestBody User user) {
+        return ResponseEntity.ok(userService.update(id, user));
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+}
+</div>
+
+<h2>2.8 Spring Messaging</h2>
+<div class="code-block">
+// JMS Producer
+@Service
+public class MessageProducer {
+    
+    @Autowired
+    private JmsTemplate jmsTemplate;
+    
+    public void sendMessage(String message) {
+        jmsTemplate.convertAndSend("my-queue", message);
+    }
+}
+
+// JMS Consumer
+@Service
+public class MessageConsumer {
+    
+    @JmsListener(destination = "my-queue")
+    public void receiveMessage(String message) {
+        System.out.println("Received: " + message);
+    }
+}
+</div>
+
+<h2>2.9 Spring Cache</h2>
+<div class="code-block">
+@Configuration
+@EnableCaching
+public class CacheConfig {
+    
+    @Bean
+    public CacheManager cacheManager() {
+        SimpleCacheManager manager = new SimpleCacheManager();
+        manager.setCaches(Arrays.asList(
+            new ConcurrentMapCache("users")
+        ));
+        return manager;
+    }
+}
+
+@Service
+public class UserService {
+    
+    @Cacheable(value = "users", key = "#id")
+    public User getUserById(Long id) {
+        // Cache miss pe hi execute hoga
+        return userRepository.findById(id).orElse(null);
+    }
+    
+    @CacheEvict(value = "users", key = "#id")
+    public void updateUser(Long id, User user) {
+        // Cache clear hoga
+        userRepository.save(user);
+    }
+    
+    @CachePut(value = "users", key = "#result.id")
+    public User saveUser(User user) {
+        // Cache update hoga
+        return userRepository.save(user);
+    }
+}
+</div>
+
+<h2>2.10 Spring Test</h2>
+<div class="code-block">
+// Unit Test
+@SpringBootTest
+class UserServiceTest {
+    
+    @Autowired
+    private UserService userService;
+    
+    @MockBean
+    private UserRepository userRepository;
+    
+    @Test
+    void testGetUser() {
+        // Given
+        User user = new User(1L, "John");
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        
+        // When
+        User result = userService.getUserById(1L);
+        
+        // Then
+        assertEquals("John", result.getName());
+        verify(userRepository).findById(1L);
+    }
+}
+
+// Integration Test
+@SpringBootTest
+@AutoConfigureMockMvc
+class UserControllerIntegrationTest {
+    
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @Test
+    void testGetUsers() throws Exception {
+        mockMvc.perform(get("/api/users"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$[0].name").value("John"));
+    }
+}
+</div>
+
+</div>
+
+<!-- ==================== SECTION 3: SPRING BOOT ==================== -->
+<div class="page-break">
+
+<h1>📚 Section 3: Spring Boot</h1>
+
+<h2>3.1 Spring Boot Kya Hai?</h2>
+<div class="note-box">
+<strong>Spring Boot:</strong> Spring Framework ka extension hai jo rapid application development ke liye bana hai. "Opinionated" approach follow karta hai — sensible defaults provide karta hai.
+</div>
+
+<h3>Key Features:</h3>
+<ul>
+    <li><strong>Auto Configuration:</strong> Automatic configuration based on classpath</li>
+    <li><strong>Starter Dependencies:</strong> Pre-configured dependency sets</li>
+    <li><strong>Embedded Servers:</strong> Tomcat, Jetty, Undertow embedded</li>
+    <li><strong>Actuator:</strong> Production-ready monitoring</li>
+    <li><strong>CLI:</strong> Command-line interface for rapid development</li>
+    <li><strong>No Code Generation:</strong> Pure Java configuration</li>
+    <li><strong>No XML Configuration:</strong> Zero XML needed</li>
+</ul>
+
+<h3>Spring vs Spring Boot:</h3>
+<table>
+    <tr><th>Feature</th><th>Spring</th><th>Spring Boot</th></tr>
+    <tr><td>Configuration</td><td>Manual XML/Java config</td><td>Auto configuration</td></tr>
+    <tr><td>Server</td><td>External Tomcat needed</td><td>Embedded server</td></tr>
+    <tr><td>Dependencies</td><td>Manual management</td><td>Starter dependencies</td></tr>
+    <tr><td>Setup Time</td><td>More time</td><td>Rapid setup</td></tr>
+    <tr><td>Microservices</td><td>Complex setup</td><td>Built for microservices</td></tr>
+    <tr><td>Production Ready</td><td>Extra config needed</td><td>Actuator included</td></tr>
+</table>
+
+<h2>3.2 Auto Configuration</h2>
+<div class="note-box">
+<strong>Auto Configuration:</strong> Spring Boot classpath mein available libraries dekh kar automatically configure karta hai.
+</div>
+
+<h3>How It Works:</h3>
+<div class="diagram">
+┌─────────────────────────────────────────────┐
+│         Auto Configuration Flow             │
+├─────────────────────────────────────────────┤
+│                                             │
+│  1. @SpringBootApplication annotation       │
+│         ↓                                   │
+│  2. @EnableAutoConfiguration triggered      │
+│         ↓                                   │
+│  3. spring.factories file read hoti hai     │
+│         ↓                                   │
+│  4. Auto-configuration classes load hongi   │
+│         ↓                                   │
+│  5. @Conditional checks classpath           │
+│         ↓                                   │
+│  6. Matching beans auto-configured honge    │
+│                                             │
+└─────────────────────────────────────────────┘
+</div>
+
+<h3>@Conditional Annotations:</h3>
+<div class="code-block">
+@ConditionalOnClass       // Class classpath pe hai?
+@ConditionalOnMissingBean // Bean already nahi hai?
+@ConditionalOnProperty    // Property set hai?
+@ConditionalOnWebApplication  // Web app hai?
+@ConditionalOnNotWebApplication // Web app nahi hai?
+</div>
+
+<h3>Example Auto Configuration:</h3>
+<div class="code-block">
+// Spring Boot automatically DataSource configure karta hai
+// Agar H2 classpath pe hai:
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+
+// application.properties
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driver-class-name=org.h2.Driver
+
+// Spring Boot automatically:
+// - DataSource bean create karega
+// - JPA configure karega
+// - Connection pool set karega
+</div>
+
+<h2>3.3 Spring Boot Starters</h2>
+<div class="note-box">
+<strong>Starters:</strong> Pre-configured dependency sets hain jo common use cases ke liye hain.
+</div>
+
+<h3>Popular Starters:</h3>
+<table>
+    <tr><th>Starter</th><th>Use Case</th></tr>
+    <tr><td>spring-boot-starter-web</td><td>REST APIs, MVC</td></tr>
+    <tr><td>spring-boot-starter-data-jpa</td><td>JPA, Hibernate</td></tr>
+    <tr><td>spring-boot-starter-security</td><td>Authentication, Authorization</td></tr>
+    <tr><td>spring-boot-starter-test</td><td>JUnit, Mockito</td></tr>
+    <tr><td>spring-boot-starter-actuator</td><td>Monitoring, Health</td></tr>
+    <tr><td>spring-boot-starter-cache</td><td>Caching support</td></tr>
+    <tr><td>spring-boot-starter-validation</td><td>Bean Validation</td></tr>
+    <tr><td>spring-boot-starter-mail</td><td>Email sending</td></tr>
+    <tr><td>spring-boot-starter-thymeleaf</td><td>Template engine</td></tr>
+    <tr><td>spring-boot-starter-data-redis</td><td>Redis cache/DB</td></tr>
+    <tr><td>spring-boot-starter-amqp</td><td>RabbitMQ</td></tr>
+    <tr><td>spring-boot-starter-kafka</td><td>Kafka messaging</td></tr>
+</table>
+
+<h3>POM.xml Example:</h3>
+<div class="code-block">
+&lt;dependencies&gt;
+    &lt;!-- Web MVC + REST --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    
+    &lt;!-- JPA + Hibernate --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    
+    &lt;!-- Security --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    
+    &lt;!-- H2 Database --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.h2database&lt;/groupId&gt;
+        &lt;artifactId&gt;h2&lt;/artifactId&gt;
+        &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</div>
+
+<h2>3.4 Embedded Servers</h2>
+<div class="note-box">
+<strong>Embedded Servers:</strong> Spring Boot application ke andar server embed hota hai — external server install karne ki zaroorat nahi.
+</div>
+
+<h3>Available Servers:</h3>
+<table>
+    <tr><th>Server</th><th>Default?</th><th>Use Case</th></tr>
+    <tr><td>Tomcat</td><td>✅ Yes</td><td>General purpose, servlets</td></tr>
+    <tr><td>Jetty</td><td>❌ No</td><td>WebSocket, OSGi</td></tr>
+    <tr><td>Undertow</td><td>❌ No</td><td>High performance, non-blocking</td></tr>
+</table>
+
+<h3>Server Configuration:</h3>
+<div class="code-block">
+# application.properties
+server.port=8080
+server.servlet.context-path=/api
+server.tomcat.max-threads=200
+server.tomcat.uri-encoding=UTF-8
+</div>
+
+<h2>3.5 Application Properties</h2>
+<div class="code-block">
+# application.properties
+spring.application.name=my-app
+server.port=8080
+
+# Database
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.username=root
+spring.datasource.password=password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# Externalized Configuration
+@Value("${app.custom.property}")
+private String customProperty;
+
+# Configuration Properties class
+@ConfigurationProperties(prefix = "app")
+public class AppProperties {
+    private String name;
+    private int version;
+    // Getters and Setters
+}
+</div>
+
+<h3>Property Sources Priority:</h3>
+<div class="diagram">
+Priority Order (High to Low):
+1. Command line arguments
+2. JNDI attributes
+3. JVM system properties
+4. OS environment variables
+5. application-{profile}.properties
+6. application.properties
+7. @PropertySource annotations
+</div>
+
+<h2>3.6 Spring Boot Actuator</h2>
+<div class="note-box">
+<strong>Actuator:</strong> Production-ready features provide karta hai — monitoring, health checks, metrics.
+</div>
+
+<h3>Configuration:</h3>
+<div class="code-block">
+# Enable all endpoints
+management.endpoints.web.exposure.include=*
+
+# Custom port
+management.server.port=8081
+
+# Health details
+management.endpoint.health.show-details=always
+</div>
+
+<h3>Available Endpoints:</h3>
+<table>
+    <tr><th>Endpoint</th><th>URL</th><th>Description</th></tr>
+    <tr><td>health</td><td>/actuator/health</td><td>Application health status</td></tr>
+    <tr><td>info</td><td>/actuator/info</td><td>Custom application info</td></tr>
+    <tr><td>metrics</td><td>/actuator/metrics</td><td>Application metrics</td></tr>
+    <tr><td>env</td><td>/actuator/env</td><td>Environment properties</td></tr>
+    <tr><td>beans</td><td>/actuator/beans</td><td>All Spring beans</td></tr>
+    <tr><td>mappings</td><td>/actuator/mappings</td><td>@RequestMapping mappings</td></tr>
+    <tr><td>loggers</td><td>/actuator/loggers</td><td>Log levels manage karo</td></tr>
+    <tr><td>threaddump</td><td>/actuator/threaddump</td><td>Thread dump</td></tr>
+    <tr><td>shutdown</td><td>/actuator/shutdown</td><td>Application shutdown</td></tr>
+</table>
+
+<h2>3.7 Spring Boot DevTools</h2>
+<div class="code-block">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;
+
+# Features:
+# - Automatic restart on file change
+# - Live reload
+# - Disable template caching
+# - Remote debugging support
+</div>
+
+<h2>3.8 Spring Boot Testing</h2>
+<div class="code-block">
+// Slice Testing
+@WebMvcTest(UserController.class)
+class UserControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @MockBean
+    private UserService userService;
+}
+
+@DataJpaTest
+class UserRepositoryTest {
+    @Autowired
+    private UserRepository userRepository;
+}
+
+// Full Integration Test
+@SpringBootTest
+@AutoConfigureMockMvc
+class FullIntegrationTest {
+    @Autowired
+    private MockMvc mockMvc;
+}
+</div>
+
+<h2>3.9 Spring Boot Deployment</h2>
+<h3>JAR Deployment:</h3>
+<div class="code-block">
+# Build JAR
+mvn clean package
+
+# Run JAR
+java -jar target/myapp.jar
+
+# Run with profile
+java -jar target/myapp.jar --spring.profiles.active=prod
+</div>
+
+<h3>Docker Deployment:</h3>
+<div class="code-block">
+FROM openjdk:17-slim
+COPY target/*.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+</div>
+
+<h2>3.10 Spring Boot Internals</h2>
+<h3>Startup Process:</h3>
+<div class="diagram">
+┌─────────────────────────────────────────────┐
+│         Spring Boot Startup                  │
+├─────────────────────────────────────────────┤
+│                                             │
+│  1. SpringApplication.create()              │
+│         ↓                                   │
+│  2. Application Context type determine      │
+│         ↓                                   │
+│  3. Initializers run                        │
+│         ↓                                   │
+│  4. Environment prepare                     │
+│         ↓                                   │
+│  5. Context refresh                         │
+│         ↓                                   │
+│  6. Auto-configuration apply                │
+│         ↓                                   │
+│  7. CommandLineRunner execute               │
+│         ↓                                   │
+│  8. Application ready                       │
+│                                             │
+└─────────────────────────────────────────────┘
+</div>
+
+<h3>@SpringBootApplication:</h3>
+<div class="code-block">
+// @SpringBootApplication = @Configuration + @EnableAutoConfiguration + @ComponentScan
+@SpringBootConfiguration  // = @Configuration
+@EnableAutoConfiguration  // Auto-config enable
+@ComponentScan            // Component scanning
+public @interface SpringBootApplication {
+}
+</div>
+
+<h2>3.11 Custom Auto Configuration</h2>
+<div class="code-block">
+// Custom auto-configuration
+@Configuration
+@ConditionalOnClass(MyService.class)
+@ConditionalOnProperty(name = "myapp.enabled", havingValue = "true")
+public class MyAutoConfiguration {
+    
+    @Bean
+    @ConditionalOnMissingBean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+
+// META-INF/spring.factories
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.example.MyAutoConfiguration
+</div>
+
+<h2>3.12 Spring Boot Best Practices</h2>
+<div class="important">
+<strong>Best Practices:</strong>
+<ul>
+    <li>Constructor injection use karo</li>
+    <li>@Configuration classes use karo</li>
+    <li>Profiles use karo for different environments</li>
+    <li>Actuator endpoints secure karo</li>
+    <li>Externalized configuration use karo</li>
+    <li>Health checks implement karo</li>
+    <li>Logging properly configure karo</li>
+    <li>Validation hamesha add karo</li>
+    <li>Error handling global level pe karo</li>
+    <li>Tests likho — unit aur integration dono</li>
+</ul>
+</div>
+
+</div>
+
+<!-- ==================== SUMMARY PAGE ==================== -->
+<div class="page-break">
+
+<h1>📝 Summary & Quick Reference</h1>
+
+<h2>Spring Core Quick Reference</h2>
+<div class="code-block">
+┌──────────────────────────────────────────────────────┐
+│  SPRING CORE CHEAT SHEET                             │
+├──────────────────────────────────────────────────────┤
+│                                                      │
+│  IoC Container:                                      │
+│  • BeanFactory - Basic, Lazy                         │
+│  • ApplicationContext - Advanced, Eager              │
+│                                                      │
+│  DI Types:                                           │
+│  • Constructor (Recommended)                         │
+│  • Setter                                            │
+│  • Field (Avoid)                                     │
+│                                                      │
+│  Bean Scopes:                                        │
+│  • singleton (Default)                               │
+│  • prototype                                         │
+│  • request, session, application                     │
+│                                                      │
+│  Lifecycle:                                          │
+│  Constructor → DI → @PostConstruct → Use →           │
+│  @PreDestroy → Destroy                               │
+│                                                      │
+│  Annotations:                                        │
+│  • @Component, @Service, @Repository, @Controller    │
+│  • @Autowired, @Qualifier                            │
+│  • @Configuration, @Bean                             │
+│  • @Value, @Profile                                 │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+</div>
+
+<h2>Spring Framework Quick Reference</h2>
+<div class="code-block">
+┌──────────────────────────────────────────────────────┐
+│  SPRING FRAMEWORK CHEAT SHEET                        │
+├──────────────────────────────────────────────────────┤
+│                                                      │
+│  MVC:                                                │
+│  • DispatcherServlet → Controller → View             │
+│  • @RequestMapping, @GetMapping, @PostMapping        │
+│  • @PathVariable, @RequestParam, @RequestBody        │
+│                                                      │
+│  AOP:                                                │
+│  • @Aspect, @Before, @After, @Around                 │
+│  • Pointcut expressions                              │
+│                                                      │
+│  Data JPA:                                           │
+│  • JpaRepository, CrudRepository                     │
+│  • @Entity, @Id, @GeneratedValue                     │
+│  • Derived queries, @Query                           │
+│                                                      │
+│  Security:                                           │
+│  • @EnableWebSecurity                                │
+│  • SecurityFilterChain                               │
+│  • @PreAuthorize, @Secured                           │
+│                                                      │
+│  Transactions:                                       │
+│  • @Transactional                                    │
+│  • Propagation, Isolation                            │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+</div>
+
+<h2>Spring Boot Quick Reference</h2>
+<div class="code-block">
+┌──────────────────────────────────────────────────────┐
+│  SPRING BOOT CHEAT SHEET                             │
+├──────────────────────────────────────────────────────┤
+│                                                      │
+│  Starters:                                           │
+│  • spring-boot-starter-web                           │
+│  • spring-boot-starter-data-jpa                      │
+│  • spring-boot-starter-security                      │
+│  • spring-boot-starter-actuator                      │
+│                                                      │
+│  Auto Configuration:                                 │
+│  • @SpringBootApplication                            │
+│  • @ConditionalOnClass                               │
+│  • @ConditionalOnMissingBean                         │
+│                                                      │
+│  Actuator Endpoints:                                 │
+│  • /actuator/health                                  │
+│  • /actuator/metrics                                 │
+│  • /actuator/env                                     │
+│                                                      │
+│  Configuration:                                      │
+│  • application.properties                            │
+│  • @ConfigurationProperties                          │
+│  • spring.profiles.active                            │
+│                                                      │
+│  Testing:                                            │
+│  • @SpringBootTest                                   │
+│  • @WebMvcTest                                       │
+│  • @DataJpaTest                                      │
+│  • @MockBean                                         │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+</div>
+
+<div class="note-box" style="text-align: center; margin-top: 50px;">
+<h3>🎯 Happy Learning! 🎯</h3>
+<p>Ye notes Spring, Spring Framework, aur Spring Boot ke complete overview hain.</p>
+<p>Practice karo, projects banao, aur master karo!</p>
+</div>
+
+</div>
+
+</body>
+</html>
